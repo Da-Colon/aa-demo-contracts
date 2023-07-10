@@ -1,6 +1,6 @@
 
 async function main() {
-
+  
 }
 
 // We recommend this pattern to be able to use async/await everywhere
