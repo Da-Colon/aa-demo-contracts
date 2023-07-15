@@ -3,7 +3,7 @@
  ** Only one instance required on each chain.
  **/
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.18;
+pragma solidity ^0.8.12;
 
 /* solhint-disable avoid-low-level-calls */
 /* solhint-disable no-inline-assembly */
@@ -202,3 +202,4 @@ interface IEntryPoint is IStakeManager, INonceManager {
      */
     function simulateHandleOp(UserOperation calldata op, address target, bytes calldata targetCallData) external;
 }
+
