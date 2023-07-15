@@ -21,12 +21,12 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "./deploy"
   ],
   "include": [
     "./test",
     "./typechain",
-    "./deploy",
     "archivedContracts.ts/Battleship.oldTest.ts"
   ],
 }
