@@ -1,0 +1,480 @@
+{
+  "address": "0x6A99110348Db821378a7F0D892132880dF4B1855",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IEntryPoint",
+          "name": "_entryPoint",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IERC20",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "ServicePaid",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "unstakeDelaySec",
+          "type": "uint32"
+        }
+      ],
+      "name": "addStake",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "entryPoint",
+      "outputs": [
+        {
+          "internalType": "contract IEntryPoint",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDeposit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum IPaymaster.PostOpMode",
+          "name": "mode",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "context",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "actualGasCost",
+          "type": "uint256"
+        }
+      ],
+      "name": "postOp",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "serviceCost",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unlockStake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "initCode",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "callData",
+              "type": "bytes"
+            },
+            {
+              "internalType": "uint256",
+              "name": "callGasLimit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "verificationGasLimit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "preVerificationGas",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxFeePerGas",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxPriorityFeePerGas",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "paymasterAndData",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "signature",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct UserOperation",
+          "name": "userOp",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "userOpHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxCost",
+          "type": "uint256"
+        }
+      ],
+      "name": "validatePaymasterUserOp",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "context",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "validationData",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "withdrawAddress",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawStake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "withdrawAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawTo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xaaa4c7cb7185735663e0ea45f296ba9d77841f8b5325d40bf8546e9dcc317c37",
+  "receipt": {
+    "to": null,
+    "from": "0x629750317d320B8bB4d48D345A6d699Cc855c4a6",
+    "contractAddress": "0x6A99110348Db821378a7F0D892132880dF4B1855",
+    "transactionIndex": 17,
+    "gasUsed": "821854",
+    "logsBloom": "0x0000000000000000000000000000000000000000000000000080000000000000000000a0000000000002000000000000001000000000000000000000000000000000000000000000000000000000000000010000000000000000000000002000000000000a0000000800000000000800000000000000000000000000000200400000000000000000000000000001000000000000000000008000000008000000000000000000000000000000000000000000004000000000000000000000020000000000000002000000000000000000000000000000000000000000000020000040000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x80527fd28ca22a21f154f07a3f25bafd79baf78493e1cdceb3ceac6015915518",
+    "transactionHash": "0xaaa4c7cb7185735663e0ea45f296ba9d77841f8b5325d40bf8546e9dcc317c37",
+    "logs": [
+      {
+        "transactionIndex": 17,
+        "blockNumber": 9353642,
+        "transactionHash": "0xaaa4c7cb7185735663e0ea45f296ba9d77841f8b5325d40bf8546e9dcc317c37",
+        "address": "0x6A99110348Db821378a7F0D892132880dF4B1855",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000629750317d320b8bb4d48d345a6d699cc855c4a6"
+        ],
+        "data": "0x",
+        "logIndex": 69,
+        "blockHash": "0x80527fd28ca22a21f154f07a3f25bafd79baf78493e1cdceb3ceac6015915518"
+      },
+      {
+        "transactionIndex": 17,
+        "blockNumber": 9353642,
+        "transactionHash": "0xaaa4c7cb7185735663e0ea45f296ba9d77841f8b5325d40bf8546e9dcc317c37",
+        "address": "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
+        "topics": [
+          "0x2da466a7b24304f47e87fa2e1e5a81b9831ce54fec19055ce277ca2f39ba42c4",
+          "0x0000000000000000000000006a99110348db821378a7f0d892132880df4b1855"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "logIndex": 70,
+        "blockHash": "0x80527fd28ca22a21f154f07a3f25bafd79baf78493e1cdceb3ceac6015915518"
+      }
+    ],
+    "blockNumber": 9353642,
+    "cumulativeGasUsed": "4241315",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
+    "0x1173149a0De9cb3Af230336F61430a5A81074146"
+  ],
+  "numDeployments": 4,
+  "solcInputHash": "9f3561b7f9f84e516a0901f21bebba35",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IEntryPoint\",\"name\":\"_entryPoint\",\"type\":\"address\"},{\"internalType\":\"contract IERC20\",\"name\":\"_token\",\"type\":\"address\"}],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"ServicePaid\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"unstakeDelaySec\",\"type\":\"uint32\"}],\"name\":\"addStake\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"entryPoint\",\"outputs\":[{\"internalType\":\"contract IEntryPoint\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDeposit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum IPaymaster.PostOpMode\",\"name\":\"mode\",\"type\":\"uint8\"},{\"internalType\":\"bytes\",\"name\":\"context\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"actualGasCost\",\"type\":\"uint256\"}],\"name\":\"postOp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"serviceCost\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unlockStake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"initCode\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"callData\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"callGasLimit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"verificationGasLimit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"preVerificationGas\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxFeePerGas\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriorityFeePerGas\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"paymasterAndData\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"internalType\":\"struct UserOperation\",\"name\":\"userOp\",\"type\":\"tuple\"},{\"internalType\":\"bytes32\",\"name\":\"userOpHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"maxCost\",\"type\":\"uint256\"}],\"name\":\"validatePaymasterUserOp\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"context\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"validationData\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"withdrawAddress\",\"type\":\"address\"}],\"name\":\"withdrawStake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"withdrawAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdrawTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"addStake(uint32)\":{\"params\":{\"unstakeDelaySec\":\"- the unstake delay for this paymaster. Can only be increased.\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"postOp(uint8,bytes,uint256)\":{\"params\":{\"actualGasCost\":\"- actual gas used so far (without this postOp call).\",\"context\":\"- the context value returned by validatePaymasterUserOp\",\"mode\":\"enum with the following options:      opSucceeded - user operation succeeded.      opReverted  - user op reverted. still has to pay for gas.      postOpReverted - user op succeeded, but caused postOp (in mode=opSucceeded) to revert.                       Now this is the 2nd call, after user's op was deliberately reverted.\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"validatePaymasterUserOp((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes),bytes32,uint256)\":{\"params\":{\"maxCost\":\"the maximum cost of this transaction (based on maximum gas and gas price from userOp)\",\"userOp\":\"the user operation\",\"userOpHash\":\"hash of the user's request data.\"},\"returns\":{\"context\":\"value to send to a postOp      zero length to signify postOp is not required.\",\"validationData\":\"signature and time-range of this operation, encoded the same as the return value of validateUserOperation      <20-byte> sigAuthorizer - 0 for valid signature, 1 to mark signature failure,         otherwise, an address of an \\\"authorizer\\\" contract.      <6-byte> validUntil - last timestamp this operation is valid. 0 for \\\"indefinite\\\"      <6-byte> validAfter - first timestamp this operation is valid      Note that the validation code cannot use block.timestamp (or block.number) directly.\"}},\"withdrawStake(address)\":{\"params\":{\"withdrawAddress\":\"the address to send withdrawn value.\"}},\"withdrawTo(address,uint256)\":{\"params\":{\"amount\":\"to withdraw\",\"withdrawAddress\":\"target to send to\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"addStake(uint32)\":{\"notice\":\"add stake for this paymaster. This method can also carry eth value to add to the current stake.\"},\"deposit()\":{\"notice\":\"add a deposit for this paymaster, used for paying for transaction fees\"},\"getDeposit()\":{\"notice\":\"return current paymaster's deposit on the entryPoint.\"},\"postOp(uint8,bytes,uint256)\":{\"notice\":\"post-operation handler. Must verify sender is the entryPoint\"},\"unlockStake()\":{\"notice\":\"unlock the stake, in order to withdraw it. The paymaster can't serve requests once unlocked, until it calls addStake again\"},\"validatePaymasterUserOp((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes),bytes32,uint256)\":{\"notice\":\"payment validation: check if paymaster agrees to pay. Must verify sender is the entryPoint. Revert to reject this request. Note that bundlers will reject this method if it changes the state, unless the paymaster is trusted (whitelisted) The paymaster pre-pays using its deposit, and receive back a refund after the postOp method returns.\"},\"withdrawStake(address)\":{\"notice\":\"withdraw the entire paymaster's stake. stake must be unlocked first (and then wait for the unstakeDelay to be over)\"},\"withdrawTo(address,uint256)\":{\"notice\":\"withdraw value from the deposit\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DemoTokenPaymaster.sol\":\"TokenPaymaster\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `from` to `to` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\\n}\\n\",\"keccak256\":\"0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"contracts/DemoTokenPaymaster.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.18;\\nimport \\\"./core/BasePaymaster.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\ncontract TokenPaymaster is BasePaymaster {\\n    IERC20 public token;\\n    uint256 public constant serviceCost = 1e18; // Cost of service in tokens (1 token)\\n    event ServicePaid(address indexed user, uint256 amount);\\n\\n    constructor(\\n        IEntryPoint _entryPoint,\\n        IERC20 _token\\n    ) BasePaymaster(_entryPoint) payable {\\n        token = _token;\\n        entryPoint.depositTo{value : msg.value}(address(this));\\n    }\\n\\n    function _validatePaymasterUserOp(\\n        UserOperation calldata userOp,\\n        bytes32 /*userOpHash*/,\\n        uint256 /*maxCost*/\\n    )\\n        internal\\n        virtual\\n        override\\n        returns (bytes memory context, uint256 validationData)\\n    {\\n        address user = userOp.sender;\\n\\n        // Check if the user has enough tokens to pay for the service\\n        require(token.balanceOf(user) >= serviceCost, \\\"Insufficient tokens\\\");\\n\\n        // Check if the paymaster is allowed to spend the required amount of tokens on behalf of the user\\n        require(\\n            token.allowance(user, address(this)) >= serviceCost,\\n            \\\"Insufficient allowance\\\"\\n        );\\n\\n        // Return the user's address as the context, no validation data is needed\\n        return (abi.encode(user), 0);\\n    }\\n\\n    function _postOp(\\n        PostOpMode mode,\\n        bytes calldata context,\\n        uint256 /*actualGasCost*/\\n    ) internal override {\\n        // Decode the context\\n        address user = abi.decode(context, (address));\\n\\n        // Transfer service cost from the user to the paymaster\\n        require(\\n            token.transferFrom(user, address(this), serviceCost),\\n            \\\"Token transfer failed\\\"\\n        );\\n\\n        // Emit the event\\n        emit ServicePaid(user, serviceCost);\\n\\n        // Handle different post-operation modes if needed\\n        if (mode == PostOpMode.opReverted) {\\n            // The operation was reverted, handle accordingly\\n            // Implement your logic here\\n        } else if (mode == PostOpMode.postOpReverted) {\\n            // The operation was successful, but postOp was reverted in the first call\\n            // Implement your logic here\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x8ea0ac34dbe25415bb2271571c43518aebdacf95aeab9f4902fd37b0b6abb8cc\",\"license\":\"GPL-3.0\"},\"contracts/core/BasePaymaster.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.12;\\n\\n\\n/* solhint-disable reason-string */\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\nimport \\\"./interfaces/IPaymaster.sol\\\";\\nimport \\\"./interfaces/IEntryPoint.sol\\\";\\nimport \\\"./Helpers.sol\\\";\\n\\n/**\\n * Helper class for creating a paymaster.\\n * provides helper methods for staking.\\n * validates that the postOp is called only by the entryPoint\\n */\\nabstract contract BasePaymaster is IPaymaster, Ownable {\\n\\n    IEntryPoint immutable public entryPoint;\\n\\n    constructor(IEntryPoint _entryPoint) {\\n        entryPoint = _entryPoint;\\n    }\\n\\n    /// @inheritdoc IPaymaster\\n    function validatePaymasterUserOp(UserOperation calldata userOp, bytes32 userOpHash, uint256 maxCost)\\n    external override returns (bytes memory context, uint256 validationData) {\\n         _requireFromEntryPoint();\\n        return _validatePaymasterUserOp(userOp, userOpHash, maxCost);\\n    }\\n\\n    function _validatePaymasterUserOp(UserOperation calldata userOp, bytes32 userOpHash, uint256 maxCost)\\n    internal virtual returns (bytes memory context, uint256 validationData);\\n\\n    /// @inheritdoc IPaymaster\\n    function postOp(PostOpMode mode, bytes calldata context, uint256 actualGasCost) external override {\\n        _requireFromEntryPoint();\\n        _postOp(mode, context, actualGasCost);\\n    }\\n\\n    /**\\n     * post-operation handler.\\n     * (verified to be called only through the entryPoint)\\n     * @dev if subclass returns a non-empty context from validatePaymasterUserOp, it must also implement this method.\\n     * @param mode enum with the following options:\\n     *      opSucceeded - user operation succeeded.\\n     *      opReverted  - user op reverted. still has to pay for gas.\\n     *      postOpReverted - user op succeeded, but caused postOp (in mode=opSucceeded) to revert.\\n     *                       Now this is the 2nd call, after user's op was deliberately reverted.\\n     * @param context - the context value returned by validatePaymasterUserOp\\n     * @param actualGasCost - actual gas used so far (without this postOp call).\\n     */\\n    function _postOp(PostOpMode mode, bytes calldata context, uint256 actualGasCost) internal virtual {\\n\\n        (mode,context,actualGasCost); // unused params\\n        // subclass must override this method if validatePaymasterUserOp returns a context\\n        revert(\\\"must override\\\");\\n    }\\n\\n    /**\\n     * add a deposit for this paymaster, used for paying for transaction fees\\n     */\\n    function deposit() public payable {\\n        entryPoint.depositTo{value : msg.value}(address(this));\\n    }\\n\\n    /**\\n     * withdraw value from the deposit\\n     * @param withdrawAddress target to send to\\n     * @param amount to withdraw\\n     */\\n    function withdrawTo(address payable withdrawAddress, uint256 amount) public onlyOwner {\\n        entryPoint.withdrawTo(withdrawAddress, amount);\\n    }\\n    /**\\n     * add stake for this paymaster.\\n     * This method can also carry eth value to add to the current stake.\\n     * @param unstakeDelaySec - the unstake delay for this paymaster. Can only be increased.\\n     */\\n    function addStake(uint32 unstakeDelaySec) external payable onlyOwner {\\n        entryPoint.addStake{value : msg.value}(unstakeDelaySec);\\n    }\\n\\n    /**\\n     * return current paymaster's deposit on the entryPoint.\\n     */\\n    function getDeposit() public view returns (uint256) {\\n        return entryPoint.balanceOf(address(this));\\n    }\\n\\n    /**\\n     * unlock the stake, in order to withdraw it.\\n     * The paymaster can't serve requests once unlocked, until it calls addStake again\\n     */\\n    function unlockStake() external onlyOwner {\\n        entryPoint.unlockStake();\\n    }\\n\\n    /**\\n     * withdraw the entire paymaster's stake.\\n     * stake must be unlocked first (and then wait for the unstakeDelay to be over)\\n     * @param withdrawAddress the address to send withdrawn value.\\n     */\\n    function withdrawStake(address payable withdrawAddress) external onlyOwner {\\n        entryPoint.withdrawStake(withdrawAddress);\\n    }\\n\\n    /// validate the call is made from a valid entrypoint\\n    function _requireFromEntryPoint() internal virtual {\\n        require(msg.sender == address(entryPoint), \\\"Sender not EntryPoint\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x147073e8e2dc6c58cf374ac793a774ac5cc140c581c1c01fe226698c4b5dbf81\",\"license\":\"GPL-3.0\"},\"contracts/core/Helpers.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.12;\\n\\n/* solhint-disable no-inline-assembly */\\n\\n/**\\n * returned data from validateUserOp.\\n * validateUserOp returns a uint256, with is created by `_packedValidationData` and parsed by `_parseValidationData`\\n * @param aggregator - address(0) - the account validated the signature by itself.\\n *              address(1) - the account failed to validate the signature.\\n *              otherwise - this is an address of a signature aggregator that must be used to validate the signature.\\n * @param validAfter - this UserOp is valid only after this timestamp.\\n * @param validaUntil - this UserOp is valid only up to this timestamp.\\n */\\n    struct ValidationData {\\n        address aggregator;\\n        uint48 validAfter;\\n        uint48 validUntil;\\n    }\\n\\n//extract sigFailed, validAfter, validUntil.\\n// also convert zero validUntil to type(uint48).max\\n    function _parseValidationData(uint validationData) pure returns (ValidationData memory data) {\\n        address aggregator = address(uint160(validationData));\\n        uint48 validUntil = uint48(validationData >> 160);\\n        if (validUntil == 0) {\\n            validUntil = type(uint48).max;\\n        }\\n        uint48 validAfter = uint48(validationData >> (48 + 160));\\n        return ValidationData(aggregator, validAfter, validUntil);\\n    }\\n\\n// intersect account and paymaster ranges.\\n    function _intersectTimeRange(uint256 validationData, uint256 paymasterValidationData) pure returns (ValidationData memory) {\\n        ValidationData memory accountValidationData = _parseValidationData(validationData);\\n        ValidationData memory pmValidationData = _parseValidationData(paymasterValidationData);\\n        address aggregator = accountValidationData.aggregator;\\n        if (aggregator == address(0)) {\\n            aggregator = pmValidationData.aggregator;\\n        }\\n        uint48 validAfter = accountValidationData.validAfter;\\n        uint48 validUntil = accountValidationData.validUntil;\\n        uint48 pmValidAfter = pmValidationData.validAfter;\\n        uint48 pmValidUntil = pmValidationData.validUntil;\\n\\n        if (validAfter < pmValidAfter) validAfter = pmValidAfter;\\n        if (validUntil > pmValidUntil) validUntil = pmValidUntil;\\n        return ValidationData(aggregator, validAfter, validUntil);\\n    }\\n\\n/**\\n * helper to pack the return value for validateUserOp\\n * @param data - the ValidationData to pack\\n */\\n    function _packValidationData(ValidationData memory data) pure returns (uint256) {\\n        return uint160(data.aggregator) | (uint256(data.validUntil) << 160) | (uint256(data.validAfter) << (160 + 48));\\n    }\\n\\n/**\\n * helper to pack the return value for validateUserOp, when not using an aggregator\\n * @param sigFailed - true for signature failure, false for success\\n * @param validUntil last timestamp this UserOperation is valid (or zero for infinite)\\n * @param validAfter first timestamp this UserOperation is valid\\n */\\n    function _packValidationData(bool sigFailed, uint48 validUntil, uint48 validAfter) pure returns (uint256) {\\n        return (sigFailed ? 1 : 0) | (uint256(validUntil) << 160) | (uint256(validAfter) << (160 + 48));\\n    }\\n\\n/**\\n * keccak function over calldata.\\n * @dev copy calldata into memory, do keccak and drop allocated memory. Strangely, this is more efficient than letting solidity do it.\\n */\\n    function calldataKeccak(bytes calldata data) pure returns (bytes32 ret) {\\n        assembly {\\n            let mem := mload(0x40)\\n            let len := data.length\\n            calldatacopy(mem, data.offset, len)\\n            ret := keccak256(mem, len)\\n        }\\n    }\\n\\n\",\"keccak256\":\"0x591c87519f7155d1909210276b77925ab2722a99b7b5d5649aecc36ebbdb045a\",\"license\":\"GPL-3.0\"},\"contracts/core/interfaces/IAggregator.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.12;\\n\\nimport \\\"./UserOperation.sol\\\";\\n\\n/**\\n * Aggregated Signatures validator.\\n */\\ninterface IAggregator {\\n\\n    /**\\n     * validate aggregated signature.\\n     * revert if the aggregated signature does not match the given list of operations.\\n     */\\n    function validateSignatures(UserOperation[] calldata userOps, bytes calldata signature) external view;\\n\\n    /**\\n     * validate signature of a single userOp\\n     * This method is should be called by bundler after EntryPoint.simulateValidation() returns (reverts) with ValidationResultWithAggregation\\n     * First it validates the signature over the userOp. Then it returns data to be used when creating the handleOps.\\n     * @param userOp the userOperation received from the user.\\n     * @return sigForUserOp the value to put into the signature field of the userOp when calling handleOps.\\n     *    (usually empty, unless account and aggregator support some kind of \\\"multisig\\\"\\n     */\\n    function validateUserOpSignature(UserOperation calldata userOp)\\n    external view returns (bytes memory sigForUserOp);\\n\\n    /**\\n     * aggregate multiple signatures into a single value.\\n     * This method is called off-chain to calculate the signature to pass with handleOps()\\n     * bundler MAY use optimized custom code perform this aggregation\\n     * @param userOps array of UserOperations to collect the signatures from.\\n     * @return aggregatedSignature the aggregated signature\\n     */\\n    function aggregateSignatures(UserOperation[] calldata userOps) external view returns (bytes memory aggregatedSignature);\\n}\\n\",\"keccak256\":\"0x060e9ddb0152250c269ba0640dc5753834ac44cf182a2837d508c0c529cae26a\",\"license\":\"GPL-3.0\"},\"contracts/core/interfaces/IEntryPoint.sol\":{\"content\":\"/**\\n ** Account-Abstraction (EIP-4337) singleton EntryPoint implementation.\\n ** Only one instance required on each chain.\\n **/\\n// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.12;\\n\\n/* solhint-disable avoid-low-level-calls */\\n/* solhint-disable no-inline-assembly */\\n/* solhint-disable reason-string */\\n\\nimport \\\"./UserOperation.sol\\\";\\nimport \\\"./IStakeManager.sol\\\";\\nimport \\\"./IAggregator.sol\\\";\\nimport \\\"./INonceManager.sol\\\";\\n\\ninterface IEntryPoint is IStakeManager, INonceManager {\\n\\n    /***\\n     * An event emitted after each successful request\\n     * @param userOpHash - unique identifier for the request (hash its entire content, except signature).\\n     * @param sender - the account that generates this request.\\n     * @param paymaster - if non-null, the paymaster that pays for this request.\\n     * @param nonce - the nonce value from the request.\\n     * @param success - true if the sender transaction succeeded, false if reverted.\\n     * @param actualGasCost - actual amount paid (by account or paymaster) for this UserOperation.\\n     * @param actualGasUsed - total gas used by this UserOperation (including preVerification, creation, validation and execution).\\n     */\\n    event UserOperationEvent(bytes32 indexed userOpHash, address indexed sender, address indexed paymaster, uint256 nonce, bool success, uint256 actualGasCost, uint256 actualGasUsed);\\n\\n    /**\\n     * account \\\"sender\\\" was deployed.\\n     * @param userOpHash the userOp that deployed this account. UserOperationEvent will follow.\\n     * @param sender the account that is deployed\\n     * @param factory the factory used to deploy this account (in the initCode)\\n     * @param paymaster the paymaster used by this UserOp\\n     */\\n    event AccountDeployed(bytes32 indexed userOpHash, address indexed sender, address factory, address paymaster);\\n\\n    /**\\n     * An event emitted if the UserOperation \\\"callData\\\" reverted with non-zero length\\n     * @param userOpHash the request unique identifier.\\n     * @param sender the sender of this request\\n     * @param nonce the nonce used in the request\\n     * @param revertReason - the return bytes from the (reverted) call to \\\"callData\\\".\\n     */\\n    event UserOperationRevertReason(bytes32 indexed userOpHash, address indexed sender, uint256 nonce, bytes revertReason);\\n\\n    /**\\n     * an event emitted by handleOps(), before starting the execution loop.\\n     * any event emitted before this event, is part of the validation.\\n     */\\n    event BeforeExecution();\\n\\n    /**\\n     * signature aggregator used by the following UserOperationEvents within this bundle.\\n     */\\n    event SignatureAggregatorChanged(address indexed aggregator);\\n\\n    /**\\n     * a custom revert error of handleOps, to identify the offending op.\\n     *  NOTE: if simulateValidation passes successfully, there should be no reason for handleOps to fail on it.\\n     *  @param opIndex - index into the array of ops to the failed one (in simulateValidation, this is always zero)\\n     *  @param reason - revert reason\\n     *      The string starts with a unique code \\\"AAmn\\\", where \\\"m\\\" is \\\"1\\\" for factory, \\\"2\\\" for account and \\\"3\\\" for paymaster issues,\\n     *      so a failure can be attributed to the correct entity.\\n     *   Should be caught in off-chain handleOps simulation and not happen on-chain.\\n     *   Useful for mitigating DoS attempts against batchers or for troubleshooting of factory/account/paymaster reverts.\\n     */\\n    error FailedOp(uint256 opIndex, string reason);\\n\\n    /**\\n     * error case when a signature aggregator fails to verify the aggregated signature it had created.\\n     */\\n    error SignatureValidationFailed(address aggregator);\\n\\n    /**\\n     * Successful result from simulateValidation.\\n     * @param returnInfo gas and time-range returned values\\n     * @param senderInfo stake information about the sender\\n     * @param factoryInfo stake information about the factory (if any)\\n     * @param paymasterInfo stake information about the paymaster (if any)\\n     */\\n    error ValidationResult(ReturnInfo returnInfo,\\n        StakeInfo senderInfo, StakeInfo factoryInfo, StakeInfo paymasterInfo);\\n\\n    /**\\n     * Successful result from simulateValidation, if the account returns a signature aggregator\\n     * @param returnInfo gas and time-range returned values\\n     * @param senderInfo stake information about the sender\\n     * @param factoryInfo stake information about the factory (if any)\\n     * @param paymasterInfo stake information about the paymaster (if any)\\n     * @param aggregatorInfo signature aggregation info (if the account requires signature aggregator)\\n     *      bundler MUST use it to verify the signature, or reject the UserOperation\\n     */\\n    error ValidationResultWithAggregation(ReturnInfo returnInfo,\\n        StakeInfo senderInfo, StakeInfo factoryInfo, StakeInfo paymasterInfo,\\n        AggregatorStakeInfo aggregatorInfo);\\n\\n    /**\\n     * return value of getSenderAddress\\n     */\\n    error SenderAddressResult(address sender);\\n\\n    /**\\n     * return value of simulateHandleOp\\n     */\\n    error ExecutionResult(uint256 preOpGas, uint256 paid, uint48 validAfter, uint48 validUntil, bool targetSuccess, bytes targetResult);\\n\\n    //UserOps handled, per aggregator\\n    struct UserOpsPerAggregator {\\n        UserOperation[] userOps;\\n\\n        // aggregator address\\n        IAggregator aggregator;\\n        // aggregated signature\\n        bytes signature;\\n    }\\n\\n    /**\\n     * Execute a batch of UserOperation.\\n     * no signature aggregator is used.\\n     * if any account requires an aggregator (that is, it returned an aggregator when\\n     * performing simulateValidation), then handleAggregatedOps() must be used instead.\\n     * @param ops the operations to execute\\n     * @param beneficiary the address to receive the fees\\n     */\\n    function handleOps(UserOperation[] calldata ops, address payable beneficiary) external;\\n\\n    /**\\n     * Execute a batch of UserOperation with Aggregators\\n     * @param opsPerAggregator the operations to execute, grouped by aggregator (or address(0) for no-aggregator accounts)\\n     * @param beneficiary the address to receive the fees\\n     */\\n    function handleAggregatedOps(\\n        UserOpsPerAggregator[] calldata opsPerAggregator,\\n        address payable beneficiary\\n    ) external;\\n\\n    /**\\n     * generate a request Id - unique identifier for this request.\\n     * the request ID is a hash over the content of the userOp (except the signature), the entrypoint and the chainid.\\n     */\\n    function getUserOpHash(UserOperation calldata userOp) external view returns (bytes32);\\n\\n    /**\\n     * Simulate a call to account.validateUserOp and paymaster.validatePaymasterUserOp.\\n     * @dev this method always revert. Successful result is ValidationResult error. other errors are failures.\\n     * @dev The node must also verify it doesn't use banned opcodes, and that it doesn't reference storage outside the account's data.\\n     * @param userOp the user operation to validate.\\n     */\\n    function simulateValidation(UserOperation calldata userOp) external;\\n\\n    /**\\n     * gas and return values during simulation\\n     * @param preOpGas the gas used for validation (including preValidationGas)\\n     * @param prefund the required prefund for this operation\\n     * @param sigFailed validateUserOp's (or paymaster's) signature check failed\\n     * @param validAfter - first timestamp this UserOp is valid (merging account and paymaster time-range)\\n     * @param validUntil - last timestamp this UserOp is valid (merging account and paymaster time-range)\\n     * @param paymasterContext returned by validatePaymasterUserOp (to be passed into postOp)\\n     */\\n    struct ReturnInfo {\\n        uint256 preOpGas;\\n        uint256 prefund;\\n        bool sigFailed;\\n        uint48 validAfter;\\n        uint48 validUntil;\\n        bytes paymasterContext;\\n    }\\n\\n    /**\\n     * returned aggregated signature info.\\n     * the aggregator returned by the account, and its current stake.\\n     */\\n    struct AggregatorStakeInfo {\\n        address aggregator;\\n        StakeInfo stakeInfo;\\n    }\\n\\n    /**\\n     * Get counterfactual sender address.\\n     *  Calculate the sender contract address that will be generated by the initCode and salt in the UserOperation.\\n     * this method always revert, and returns the address in SenderAddressResult error\\n     * @param initCode the constructor code to be passed into the UserOperation.\\n     */\\n    function getSenderAddress(bytes memory initCode) external;\\n\\n\\n    /**\\n     * simulate full execution of a UserOperation (including both validation and target execution)\\n     * this method will always revert with \\\"ExecutionResult\\\".\\n     * it performs full validation of the UserOperation, but ignores signature error.\\n     * an optional target address is called after the userop succeeds, and its value is returned\\n     * (before the entire call is reverted)\\n     * Note that in order to collect the the success/failure of the target call, it must be executed\\n     * with trace enabled to track the emitted events.\\n     * @param op the UserOperation to simulate\\n     * @param target if nonzero, a target address to call after userop simulation. If called, the targetSuccess and targetResult\\n     *        are set to the return from that call.\\n     * @param targetCallData callData to pass to target address\\n     */\\n    function simulateHandleOp(UserOperation calldata op, address target, bytes calldata targetCallData) external;\\n}\\n\\n\",\"keccak256\":\"0x3a90bf308819ed125fa4202f880999caff8a8686633b8ddb79a30ca240d5b8f8\",\"license\":\"GPL-3.0\"},\"contracts/core/interfaces/INonceManager.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.12;\\n\\ninterface INonceManager {\\n\\n    /**\\n     * Return the next nonce for this sender.\\n     * Within a given key, the nonce values are sequenced (starting with zero, and incremented by one on each userop)\\n     * But UserOp with different keys can come with arbitrary order.\\n     *\\n     * @param sender the account address\\n     * @param key the high 192 bit of the nonce\\n     * @return nonce a full nonce to pass for next UserOp with this sender.\\n     */\\n    function getNonce(address sender, uint192 key)\\n    external view returns (uint256 nonce);\\n\\n    /**\\n     * Manually increment the nonce of the sender.\\n     * This method is exposed just for completeness..\\n     * Account does NOT need to call it, neither during validation, nor elsewhere,\\n     * as the EntryPoint will update the nonce regardless.\\n     * Possible use-case is call it with various keys to \\\"initialize\\\" their nonces to one, so that future\\n     * UserOperations will not pay extra for the first transaction with a given key.\\n     */\\n    function incrementNonce(uint192 key) external;\\n}\\n\",\"keccak256\":\"0x509871e6c63663cdcc3eba19920fe84e991f38b289b1377ac3c3a6d9f22d7e12\",\"license\":\"GPL-3.0\"},\"contracts/core/interfaces/IPaymaster.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.12;\\n\\nimport \\\"./UserOperation.sol\\\";\\n\\n/**\\n * the interface exposed by a paymaster contract, who agrees to pay the gas for user's operations.\\n * a paymaster must hold a stake to cover the required entrypoint stake and also the gas for the transaction.\\n */\\ninterface IPaymaster {\\n\\n    enum PostOpMode {\\n        opSucceeded, // user op succeeded\\n        opReverted, // user op reverted. still has to pay for gas.\\n        postOpReverted //user op succeeded, but caused postOp to revert. Now it's a 2nd call, after user's op was deliberately reverted.\\n    }\\n\\n    /**\\n     * payment validation: check if paymaster agrees to pay.\\n     * Must verify sender is the entryPoint.\\n     * Revert to reject this request.\\n     * Note that bundlers will reject this method if it changes the state, unless the paymaster is trusted (whitelisted)\\n     * The paymaster pre-pays using its deposit, and receive back a refund after the postOp method returns.\\n     * @param userOp the user operation\\n     * @param userOpHash hash of the user's request data.\\n     * @param maxCost the maximum cost of this transaction (based on maximum gas and gas price from userOp)\\n     * @return context value to send to a postOp\\n     *      zero length to signify postOp is not required.\\n     * @return validationData signature and time-range of this operation, encoded the same as the return value of validateUserOperation\\n     *      <20-byte> sigAuthorizer - 0 for valid signature, 1 to mark signature failure,\\n     *         otherwise, an address of an \\\"authorizer\\\" contract.\\n     *      <6-byte> validUntil - last timestamp this operation is valid. 0 for \\\"indefinite\\\"\\n     *      <6-byte> validAfter - first timestamp this operation is valid\\n     *      Note that the validation code cannot use block.timestamp (or block.number) directly.\\n     */\\n    function validatePaymasterUserOp(UserOperation calldata userOp, bytes32 userOpHash, uint256 maxCost)\\n    external returns (bytes memory context, uint256 validationData);\\n\\n    /**\\n     * post-operation handler.\\n     * Must verify sender is the entryPoint\\n     * @param mode enum with the following options:\\n     *      opSucceeded - user operation succeeded.\\n     *      opReverted  - user op reverted. still has to pay for gas.\\n     *      postOpReverted - user op succeeded, but caused postOp (in mode=opSucceeded) to revert.\\n     *                       Now this is the 2nd call, after user's op was deliberately reverted.\\n     * @param context - the context value returned by validatePaymasterUserOp\\n     * @param actualGasCost - actual gas used so far (without this postOp call).\\n     */\\n    function postOp(PostOpMode mode, bytes calldata context, uint256 actualGasCost) external;\\n}\\n\",\"keccak256\":\"0x36858ba8685024974f533530420688da3454d29996ebc42e410673a1ed2ec456\",\"license\":\"GPL-3.0\"},\"contracts/core/interfaces/IStakeManager.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-only\\npragma solidity ^0.8.12;\\n\\n/**\\n * manage deposits and stakes.\\n * deposit is just a balance used to pay for UserOperations (either by a paymaster or an account)\\n * stake is value locked for at least \\\"unstakeDelay\\\" by the staked entity.\\n */\\ninterface IStakeManager {\\n\\n    event Deposited(\\n        address indexed account,\\n        uint256 totalDeposit\\n    );\\n\\n    event Withdrawn(\\n        address indexed account,\\n        address withdrawAddress,\\n        uint256 amount\\n    );\\n\\n    /// Emitted when stake or unstake delay are modified\\n    event StakeLocked(\\n        address indexed account,\\n        uint256 totalStaked,\\n        uint256 unstakeDelaySec\\n    );\\n\\n    /// Emitted once a stake is scheduled for withdrawal\\n    event StakeUnlocked(\\n        address indexed account,\\n        uint256 withdrawTime\\n    );\\n\\n    event StakeWithdrawn(\\n        address indexed account,\\n        address withdrawAddress,\\n        uint256 amount\\n    );\\n\\n    /**\\n     * @param deposit the entity's deposit\\n     * @param staked true if this entity is staked.\\n     * @param stake actual amount of ether staked for this entity.\\n     * @param unstakeDelaySec minimum delay to withdraw the stake.\\n     * @param withdrawTime - first block timestamp where 'withdrawStake' will be callable, or zero if already locked\\n     * @dev sizes were chosen so that (deposit,staked, stake) fit into one cell (used during handleOps)\\n     *    and the rest fit into a 2nd cell.\\n     *    112 bit allows for 10^15 eth\\n     *    48 bit for full timestamp\\n     *    32 bit allows 150 years for unstake delay\\n     */\\n    struct DepositInfo {\\n        uint112 deposit;\\n        bool staked;\\n        uint112 stake;\\n        uint32 unstakeDelaySec;\\n        uint48 withdrawTime;\\n    }\\n\\n    //API struct used by getStakeInfo and simulateValidation\\n    struct StakeInfo {\\n        uint256 stake;\\n        uint256 unstakeDelaySec;\\n    }\\n\\n    /// @return info - full deposit information of given account\\n    function getDepositInfo(address account) external view returns (DepositInfo memory info);\\n\\n    /// @return the deposit (for gas payment) of the account\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * add to the deposit of the given account\\n     */\\n    function depositTo(address account) external payable;\\n\\n    /**\\n     * add to the account's stake - amount and delay\\n     * any pending unstake is first cancelled.\\n     * @param _unstakeDelaySec the new lock duration before the deposit can be withdrawn.\\n     */\\n    function addStake(uint32 _unstakeDelaySec) external payable;\\n\\n    /**\\n     * attempt to unlock the stake.\\n     * the value can be withdrawn (using withdrawStake) after the unstake delay.\\n     */\\n    function unlockStake() external;\\n\\n    /**\\n     * withdraw from the (unlocked) stake.\\n     * must first call unlockStake and wait for the unstakeDelay to pass\\n     * @param withdrawAddress the address to send withdrawn value.\\n     */\\n    function withdrawStake(address payable withdrawAddress) external;\\n\\n    /**\\n     * withdraw from the deposit.\\n     * @param withdrawAddress the address to send withdrawn value.\\n     * @param withdrawAmount the amount to withdraw.\\n     */\\n    function withdrawTo(address payable withdrawAddress, uint256 withdrawAmount) external;\\n}\\n\",\"keccak256\":\"0xd227b02888cd4ac68daebcdfd992ec00f9fff66fa3b3bb16f656cd582fa3480f\",\"license\":\"GPL-3.0-only\"},\"contracts/core/interfaces/UserOperation.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.12;\\n\\n/* solhint-disable no-inline-assembly */\\n\\nimport {calldataKeccak} from \\\"../Helpers.sol\\\";\\n\\n/**\\n * User Operation struct\\n * @param sender the sender account of this request.\\n * @param nonce unique value the sender uses to verify it is not a replay.\\n * @param initCode if set, the account contract will be created by this constructor/\\n * @param callData the method call to execute on this account.\\n * @param callGasLimit the gas limit passed to the callData method call.\\n * @param verificationGasLimit gas used for validateUserOp and validatePaymasterUserOp.\\n * @param preVerificationGas gas not calculated by the handleOps method, but added to the gas paid. Covers batch overhead.\\n * @param maxFeePerGas same as EIP-1559 gas parameter.\\n * @param maxPriorityFeePerGas same as EIP-1559 gas parameter.\\n * @param paymasterAndData if set, this field holds the paymaster address and paymaster-specific data. the paymaster will pay for the transaction instead of the sender.\\n * @param signature sender-verified signature over the entire request, the EntryPoint address and the chain ID.\\n */\\nstruct UserOperation {\\n    address sender;\\n    uint256 nonce;\\n    bytes initCode;\\n    bytes callData;\\n    uint256 callGasLimit;\\n    uint256 verificationGasLimit;\\n    uint256 preVerificationGas;\\n    uint256 maxFeePerGas;\\n    uint256 maxPriorityFeePerGas;\\n    bytes paymasterAndData;\\n    bytes signature;\\n}\\n\\n/**\\n * Utility functions helpful when working with UserOperation structs.\\n */\\nlibrary UserOperationLib {\\n    function getSender(\\n        UserOperation calldata userOp\\n    ) internal pure returns (address) {\\n        address data;\\n        //read sender from userOp, which is first userOp member (saves 800 gas...)\\n        assembly {\\n            data := calldataload(userOp)\\n        }\\n        return address(uint160(data));\\n    }\\n\\n    //relayer/block builder might submit the TX with higher priorityFee, but the user should not\\n    // pay above what he signed for.\\n    function gasPrice(\\n        UserOperation calldata userOp\\n    ) internal view returns (uint256) {\\n        unchecked {\\n            uint256 maxFeePerGas = userOp.maxFeePerGas;\\n            uint256 maxPriorityFeePerGas = userOp.maxPriorityFeePerGas;\\n            if (maxFeePerGas == maxPriorityFeePerGas) {\\n                //legacy mode (for networks that don't support basefee opcode)\\n                return maxFeePerGas;\\n            }\\n            return min(maxFeePerGas, maxPriorityFeePerGas + block.basefee);\\n        }\\n    }\\n\\n    function pack(\\n        UserOperation calldata userOp\\n    ) internal pure returns (bytes memory ret) {\\n        address sender = getSender(userOp);\\n        uint256 nonce = userOp.nonce;\\n        bytes32 hashInitCode = calldataKeccak(userOp.initCode);\\n        bytes32 hashCallData = calldataKeccak(userOp.callData);\\n        uint256 callGasLimit = userOp.callGasLimit;\\n        uint256 verificationGasLimit = userOp.verificationGasLimit;\\n        uint256 preVerificationGas = userOp.preVerificationGas;\\n        uint256 maxFeePerGas = userOp.maxFeePerGas;\\n        uint256 maxPriorityFeePerGas = userOp.maxPriorityFeePerGas;\\n        bytes32 hashPaymasterAndData = calldataKeccak(userOp.paymasterAndData);\\n\\n        return\\n            abi.encode(\\n                sender,\\n                nonce,\\n                hashInitCode,\\n                hashCallData,\\n                callGasLimit,\\n                verificationGasLimit,\\n                preVerificationGas,\\n                maxFeePerGas,\\n                maxPriorityFeePerGas,\\n                hashPaymasterAndData\\n            );\\n    }\\n\\n    function hash(\\n        UserOperation calldata userOp\\n    ) internal pure returns (bytes32) {\\n        return keccak256(pack(userOp));\\n    }\\n\\n    function min(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a < b ? a : b;\\n    }\\n}\\n\",\"keccak256\":\"0x2cbbdb5dfb28be35647ce16319b969081b9cc64513acfe14d0fe13a7fd300a4d\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x60a0604052604051610e77380380610e7783398101604081905261002291610113565b8161002c336100ab565b6001600160a01b039081166080819052600180546001600160a01b0319169284169290921790915560405163b760faf960e01b815230600482015263b760faf99034906024016000604051808303818588803b15801561008b57600080fd5b505af115801561009f573d6000803e3d6000fd5b5050505050505061014d565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6001600160a01b038116811461011057600080fd5b50565b6000806040838503121561012657600080fd5b8251610131816100fb565b6020840151909250610142816100fb565b809150509250929050565b608051610cde610199600039600081816101bf015281816102c30152818161035a015281816103d60152818161046a015281816104e10152818161056e01526107110152610cde6000f3fe6080604052600436106100dd5760003560e01c8063bb9fe6bf1161007f578063d0e30db011610059578063d0e30db01461022b578063f2fde38b14610233578063f465c77e14610253578063fc0c546a1461028157600080fd5b8063bb9fe6bf146101e1578063c23a5cea146101f6578063c399ec881461021657600080fd5b8063715018a6116100bb578063715018a6146101465780638da5cb5b1461015b578063a9a234091461018d578063b0d691fe146101ad57600080fd5b80630396cb60146100e25780631c47b5c6146100f7578063205c287814610126575b600080fd5b6100f56100f0366004610a94565b6102a1565b005b34801561010357600080fd5b50610113670de0b6b3a764000081565b6040519081526020015b60405180910390f35b34801561013257600080fd5b506100f5610141366004610ad6565b61032c565b34801561015257600080fd5b506100f561039e565b34801561016757600080fd5b506000546001600160a01b03165b6040516001600160a01b03909116815260200161011d565b34801561019957600080fd5b506100f56101a8366004610b02565b6103b2565b3480156101b957600080fd5b506101757f000000000000000000000000000000000000000000000000000000000000000081565b3480156101ed57600080fd5b506100f56103cc565b34801561020257600080fd5b506100f5610211366004610b91565b610443565b34801561022257600080fd5b506101136104c9565b6100f5610559565b34801561023f57600080fd5b506100f561024e366004610b91565b6105bb565b34801561025f57600080fd5b5061027361026e366004610bae565b610639565b60405161011d929190610c02565b34801561028d57600080fd5b50600154610175906001600160a01b031681565b6102a961065c565b604051621cb65b60e51b815263ffffffff821660048201527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031690630396cb609034906024016000604051808303818588803b15801561031057600080fd5b505af1158015610324573d6000803e3d6000fd5b505050505050565b61033461065c565b60405163040b850f60e31b81526001600160a01b038381166004830152602482018390527f0000000000000000000000000000000000000000000000000000000000000000169063205c287890604401600060405180830381600087803b15801561031057600080fd5b6103a661065c565b6103b060006106b6565b565b6103ba610706565b6103c684848484610776565b50505050565b6103d461065c565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663bb9fe6bf6040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561042f57600080fd5b505af11580156103c6573d6000803e3d6000fd5b61044b61065c565b60405163611d2e7560e11b81526001600160a01b0382811660048301527f0000000000000000000000000000000000000000000000000000000000000000169063c23a5cea90602401600060405180830381600087803b1580156104ae57600080fd5b505af11580156104c2573d6000803e3d6000fd5b5050505050565b6040516370a0823160e01b81523060048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906370a0823190602401602060405180830381865afa158015610530573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105549190610c57565b905090565b60405163b760faf960e01b81523060048201527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063b760faf99034906024016000604051808303818588803b1580156104ae57600080fd5b6105c361065c565b6001600160a01b03811661062d5760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084015b60405180910390fd5b610636816106b6565b50565b60606000610645610706565b6106508585856108cf565b91509150935093915050565b6000546001600160a01b031633146103b05760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610624565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146103b05760405162461bcd60e51b815260206004820152601560248201527414d95b99195c881b9bdd08115b9d1c9e541bda5b9d605a1b6044820152606401610624565b600061078483850185610b91565b6001546040516323b872dd60e01b81526001600160a01b038084166004830152306024830152670de0b6b3a764000060448301529293509116906323b872dd906064016020604051808303816000875af11580156107e6573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061080a9190610c70565b61084e5760405162461bcd60e51b8152602060048201526015602482015274151bdad95b881d1c985b9cd9995c8819985a5b1959605a1b6044820152606401610624565b806001600160a01b03167f8dfe705393653a2ea59081f717d7096d435eeaa5049f45e1cbdd32f34e513d56670de0b6b3a764000060405161089191815260200190565b60405180910390a260018560028111156108ad576108ad610c92565b146104c25760028560028111156108c6576108c6610c92565b50505050505050565b60606000806108e16020870187610b91565b6001546040516370a0823160e01b81526001600160a01b038084166004830152929350670de0b6b3a764000092909116906370a0823190602401602060405180830381865afa158015610938573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061095c9190610c57565b10156109a05760405162461bcd60e51b8152602060048201526013602482015272496e73756666696369656e7420746f6b656e7360681b6044820152606401610624565b600154604051636eb1769f60e11b81526001600160a01b038381166004830152306024830152670de0b6b3a764000092169063dd62ed3e90604401602060405180830381865afa1580156109f8573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a1c9190610c57565b1015610a635760405162461bcd60e51b8152602060048201526016602482015275496e73756666696369656e7420616c6c6f77616e636560501b6044820152606401610624565b604080516001600160a01b03831660208201520160408051601f198184030181529190529660009650945050505050565b600060208284031215610aa657600080fd5b813563ffffffff81168114610aba57600080fd5b9392505050565b6001600160a01b038116811461063657600080fd5b60008060408385031215610ae957600080fd5b8235610af481610ac1565b946020939093013593505050565b60008060008060608587031215610b1857600080fd5b843560038110610b2757600080fd5b9350602085013567ffffffffffffffff80821115610b4457600080fd5b818701915087601f830112610b5857600080fd5b813581811115610b6757600080fd5b886020828501011115610b7957600080fd5b95986020929092019750949560400135945092505050565b600060208284031215610ba357600080fd5b8135610aba81610ac1565b600080600060608486031215610bc357600080fd5b833567ffffffffffffffff811115610bda57600080fd5b84016101608187031215610bed57600080fd5b95602085013595506040909401359392505050565b604081526000835180604084015260005b81811015610c305760208187018101516060868401015201610c13565b506000606082850101526060601f19601f8301168401019150508260208301529392505050565b600060208284031215610c6957600080fd5b5051919050565b600060208284031215610c8257600080fd5b81518015158114610aba57600080fd5b634e487b7160e01b600052602160045260246000fdfea2646970667358221220878744452d351dad42e792ba0b788d0533559a236fe8a05e5f75845a502c41b064736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600436106100dd5760003560e01c8063bb9fe6bf1161007f578063d0e30db011610059578063d0e30db01461022b578063f2fde38b14610233578063f465c77e14610253578063fc0c546a1461028157600080fd5b8063bb9fe6bf146101e1578063c23a5cea146101f6578063c399ec881461021657600080fd5b8063715018a6116100bb578063715018a6146101465780638da5cb5b1461015b578063a9a234091461018d578063b0d691fe146101ad57600080fd5b80630396cb60146100e25780631c47b5c6146100f7578063205c287814610126575b600080fd5b6100f56100f0366004610a94565b6102a1565b005b34801561010357600080fd5b50610113670de0b6b3a764000081565b6040519081526020015b60405180910390f35b34801561013257600080fd5b506100f5610141366004610ad6565b61032c565b34801561015257600080fd5b506100f561039e565b34801561016757600080fd5b506000546001600160a01b03165b6040516001600160a01b03909116815260200161011d565b34801561019957600080fd5b506100f56101a8366004610b02565b6103b2565b3480156101b957600080fd5b506101757f000000000000000000000000000000000000000000000000000000000000000081565b3480156101ed57600080fd5b506100f56103cc565b34801561020257600080fd5b506100f5610211366004610b91565b610443565b34801561022257600080fd5b506101136104c9565b6100f5610559565b34801561023f57600080fd5b506100f561024e366004610b91565b6105bb565b34801561025f57600080fd5b5061027361026e366004610bae565b610639565b60405161011d929190610c02565b34801561028d57600080fd5b50600154610175906001600160a01b031681565b6102a961065c565b604051621cb65b60e51b815263ffffffff821660048201527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031690630396cb609034906024016000604051808303818588803b15801561031057600080fd5b505af1158015610324573d6000803e3d6000fd5b505050505050565b61033461065c565b60405163040b850f60e31b81526001600160a01b038381166004830152602482018390527f0000000000000000000000000000000000000000000000000000000000000000169063205c287890604401600060405180830381600087803b15801561031057600080fd5b6103a661065c565b6103b060006106b6565b565b6103ba610706565b6103c684848484610776565b50505050565b6103d461065c565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663bb9fe6bf6040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561042f57600080fd5b505af11580156103c6573d6000803e3d6000fd5b61044b61065c565b60405163611d2e7560e11b81526001600160a01b0382811660048301527f0000000000000000000000000000000000000000000000000000000000000000169063c23a5cea90602401600060405180830381600087803b1580156104ae57600080fd5b505af11580156104c2573d6000803e3d6000fd5b5050505050565b6040516370a0823160e01b81523060048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906370a0823190602401602060405180830381865afa158015610530573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105549190610c57565b905090565b60405163b760faf960e01b81523060048201527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063b760faf99034906024016000604051808303818588803b1580156104ae57600080fd5b6105c361065c565b6001600160a01b03811661062d5760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084015b60405180910390fd5b610636816106b6565b50565b60606000610645610706565b6106508585856108cf565b91509150935093915050565b6000546001600160a01b031633146103b05760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610624565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146103b05760405162461bcd60e51b815260206004820152601560248201527414d95b99195c881b9bdd08115b9d1c9e541bda5b9d605a1b6044820152606401610624565b600061078483850185610b91565b6001546040516323b872dd60e01b81526001600160a01b038084166004830152306024830152670de0b6b3a764000060448301529293509116906323b872dd906064016020604051808303816000875af11580156107e6573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061080a9190610c70565b61084e5760405162461bcd60e51b8152602060048201526015602482015274151bdad95b881d1c985b9cd9995c8819985a5b1959605a1b6044820152606401610624565b806001600160a01b03167f8dfe705393653a2ea59081f717d7096d435eeaa5049f45e1cbdd32f34e513d56670de0b6b3a764000060405161089191815260200190565b60405180910390a260018560028111156108ad576108ad610c92565b146104c25760028560028111156108c6576108c6610c92565b50505050505050565b60606000806108e16020870187610b91565b6001546040516370a0823160e01b81526001600160a01b038084166004830152929350670de0b6b3a764000092909116906370a0823190602401602060405180830381865afa158015610938573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061095c9190610c57565b10156109a05760405162461bcd60e51b8152602060048201526013602482015272496e73756666696369656e7420746f6b656e7360681b6044820152606401610624565b600154604051636eb1769f60e11b81526001600160a01b038381166004830152306024830152670de0b6b3a764000092169063dd62ed3e90604401602060405180830381865afa1580156109f8573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a1c9190610c57565b1015610a635760405162461bcd60e51b8152602060048201526016602482015275496e73756666696369656e7420616c6c6f77616e636560501b6044820152606401610624565b604080516001600160a01b03831660208201520160408051601f198184030181529190529660009650945050505050565b600060208284031215610aa657600080fd5b813563ffffffff81168114610aba57600080fd5b9392505050565b6001600160a01b038116811461063657600080fd5b60008060408385031215610ae957600080fd5b8235610af481610ac1565b946020939093013593505050565b60008060008060608587031215610b1857600080fd5b843560038110610b2757600080fd5b9350602085013567ffffffffffffffff80821115610b4457600080fd5b818701915087601f830112610b5857600080fd5b813581811115610b6757600080fd5b886020828501011115610b7957600080fd5b95986020929092019750949560400135945092505050565b600060208284031215610ba357600080fd5b8135610aba81610ac1565b600080600060608486031215610bc357600080fd5b833567ffffffffffffffff811115610bda57600080fd5b84016101608187031215610bed57600080fd5b95602085013595506040909401359392505050565b604081526000835180604084015260005b81811015610c305760208187018101516060868401015201610c13565b506000606082850101526060601f19601f8301168401019150508260208301529392505050565b600060208284031215610c6957600080fd5b5051919050565b600060208284031215610c8257600080fd5b81518015158114610aba57600080fd5b634e487b7160e01b600052602160045260246000fdfea2646970667358221220878744452d351dad42e792ba0b788d0533559a236fe8a05e5f75845a502c41b064736f6c63430008120033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "addStake(uint32)": {
+        "params": {
+          "unstakeDelaySec": "- the unstake delay for this paymaster. Can only be increased."
+        }
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "postOp(uint8,bytes,uint256)": {
+        "params": {
+          "actualGasCost": "- actual gas used so far (without this postOp call).",
+          "context": "- the context value returned by validatePaymasterUserOp",
+          "mode": "enum with the following options:      opSucceeded - user operation succeeded.      opReverted  - user op reverted. still has to pay for gas.      postOpReverted - user op succeeded, but caused postOp (in mode=opSucceeded) to revert.                       Now this is the 2nd call, after user's op was deliberately reverted."
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      },
+      "validatePaymasterUserOp((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes),bytes32,uint256)": {
+        "params": {
+          "maxCost": "the maximum cost of this transaction (based on maximum gas and gas price from userOp)",
+          "userOp": "the user operation",
+          "userOpHash": "hash of the user's request data."
+        },
+        "returns": {
+          "context": "value to send to a postOp      zero length to signify postOp is not required.",
+          "validationData": "signature and time-range of this operation, encoded the same as the return value of validateUserOperation      <20-byte> sigAuthorizer - 0 for valid signature, 1 to mark signature failure,         otherwise, an address of an \"authorizer\" contract.      <6-byte> validUntil - last timestamp this operation is valid. 0 for \"indefinite\"      <6-byte> validAfter - first timestamp this operation is valid      Note that the validation code cannot use block.timestamp (or block.number) directly."
+        }
+      },
+      "withdrawStake(address)": {
+        "params": {
+          "withdrawAddress": "the address to send withdrawn value."
+        }
+      },
+      "withdrawTo(address,uint256)": {
+        "params": {
+          "amount": "to withdraw",
+          "withdrawAddress": "target to send to"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "addStake(uint32)": {
+        "notice": "add stake for this paymaster. This method can also carry eth value to add to the current stake."
+      },
+      "deposit()": {
+        "notice": "add a deposit for this paymaster, used for paying for transaction fees"
+      },
+      "getDeposit()": {
+        "notice": "return current paymaster's deposit on the entryPoint."
+      },
+      "postOp(uint8,bytes,uint256)": {
+        "notice": "post-operation handler. Must verify sender is the entryPoint"
+      },
+      "unlockStake()": {
+        "notice": "unlock the stake, in order to withdraw it. The paymaster can't serve requests once unlocked, until it calls addStake again"
+      },
+      "validatePaymasterUserOp((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes),bytes32,uint256)": {
+        "notice": "payment validation: check if paymaster agrees to pay. Must verify sender is the entryPoint. Revert to reject this request. Note that bundlers will reject this method if it changes the state, unless the paymaster is trusted (whitelisted) The paymaster pre-pays using its deposit, and receive back a refund after the postOp method returns."
+      },
+      "withdrawStake(address)": {
+        "notice": "withdraw the entire paymaster's stake. stake must be unlocked first (and then wait for the unstakeDelay to be over)"
+      },
+      "withdrawTo(address,uint256)": {
+        "notice": "withdraw value from the deposit"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 7,
+        "contract": "contracts/DemoTokenPaymaster.sol:TokenPaymaster",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 5836,
+        "contract": "contracts/DemoTokenPaymaster.sol:TokenPaymaster",
+        "label": "token",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_contract(IERC20)1630"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IERC20)1630": {
+        "encoding": "inplace",
+        "label": "contract IERC20",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}
