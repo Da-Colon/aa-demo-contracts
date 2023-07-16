@@ -8,6 +8,7 @@
     "deploy:demonft:goerli": "pnpm run package:prep && hardhat deploy --network goerli --tags DEMO_NFT --export ./minified/deployments.json",
     "deploy:accountFactory:goerli": "pnpm run package:prep && hardhat deploy --network goerli --tags SmartAccountFactory --export ./minified/deployments.json",
     "deploy:tokenPaymaster:goerli": "pnpm run package:prep && hardhat deploy --network goerli --tags TokenPaymaster --export ./minified/deployments.json",
+    "deploy:goerli": "pnpm run package:prep && hardhat deploy --network goerli --export ./minified/deployments.json",
     "verify:goerli": "hardhat etherscan-verify --network goerli --solc-input",
     "clean": "hardhat clean && rimraf dist && rimraf typechain",
     "package:prep": "pnpm run compile && tsc",
