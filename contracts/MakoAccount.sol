@@ -251,7 +251,15 @@ contract MakoAccount is
      * - The subscription must be active.
      * - The contract must have enough tokens to pay the next subscription period.
      */
-    function processSubscription() external onlyOwner {
+    function processSubscription(
+        UserOperation calldata userOp,
+        bytes32 userOpHash
+    ) external {
+        // Validate the user operation's signature
+        require(
+            _validateSignature(userOp, userOpHash) != SIG_VALIDATION_FAILED,
+            "Invalid signature"
+        );
         // The subscription must exist
         require(
             activeSubscription.recipient != address(0),

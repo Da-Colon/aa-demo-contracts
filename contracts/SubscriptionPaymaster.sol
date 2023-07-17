@@ -33,16 +33,16 @@ contract SubscriptionPaymaster is BasePaymaster {
         entryPoint.depositTo{value: msg.value}(address(this));
     }
 
-    /**
-     * @dev Implements the abstract method from BasePaymaster. This method validates the user's operation by checking
-     *      if the user has an active subscription.
-     * @param userOp The user operation to validate.
-     */
     function _validatePaymasterUserOp(
         UserOperation calldata userOp,
-        bytes32 /*userOpHash*/,
+        bytes32 userOpHash,
         uint256 /*maxCost*/
-    ) internal virtual override returns (bytes memory context, uint256 validationData) {
+    )
+        internal
+        virtual
+        override
+        returns (bytes memory context, uint256 validationData)
+    {
         address user = userOp.sender;
         MakoAccount account = MakoAccount(payable(userOp.sender));
 
@@ -50,6 +50,12 @@ contract SubscriptionPaymaster is BasePaymaster {
         MakoAccount.Subscription memory subscription = account
             .getSubscription();
         require(subscription.active, "No active subscription");
+
+        // Try to process the subscription; send the user's operation and hash to the account to validate signature
+        try account.processSubscription(userOp, userOpHash) {} catch {
+            // If the processing fails (e.g., due to insufficient balance), revert the transaction
+            revert("Subscription processing failed");
+        }
 
         // Return the user's address as the context, no validation data is needed
         return (abi.encode(user), 0);
