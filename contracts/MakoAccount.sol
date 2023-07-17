@@ -9,6 +9,11 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./core/BaseAccount.sol";
 import "./core/TokenCallbackHandler.sol";
 
+/**
+ * @title MakoAccount
+ * @dev This contract enables users to manage a subscription model. It also provides the basic functionalities
+ * to execute transactions, batch transactions and handle deposits.
+ */
 contract MakoAccount is
     BaseAccount,
     TokenCallbackHandler,
@@ -21,6 +26,7 @@ contract MakoAccount is
 
     IEntryPoint private immutable _entryPoint;
 
+    //Event logs
     event SimpleAccountInitialized(
         IEntryPoint indexed entryPoint,
         address indexed owner
@@ -43,6 +49,7 @@ contract MakoAccount is
         return _entryPoint;
     }
 
+    // This function is a fallback function and allows the contract to receive funds
     receive() external payable {}
 
     constructor(IEntryPoint anEntryPoint) {
@@ -50,6 +57,7 @@ contract MakoAccount is
         _disableInitializers();
     }
 
+    // Internal function to enforce the owner-only restriction
     function _onlyOwner() internal view {
         require(
             msg.sender == owner || msg.sender == address(this),
@@ -57,6 +65,7 @@ contract MakoAccount is
         );
     }
 
+    // This function allows the owner or the entry point to execute a transaction on behalf of the contract
     function execute(
         address dest,
         uint256 value,
@@ -66,6 +75,7 @@ contract MakoAccount is
         _call(dest, value, func);
     }
 
+    // This function allows the owner or the entry point to execute multiple transactions on behalf of the contract
     function executeBatch(
         address[] calldata dest,
         bytes[] calldata func
@@ -81,11 +91,13 @@ contract MakoAccount is
         _initialize(anOwner);
     }
 
+    // This function is used for initialising the owner of the contract
     function _initialize(address anOwner) internal virtual {
         owner = anOwner;
         emit SimpleAccountInitialized(_entryPoint, owner);
     }
 
+    // This function ensures that the function caller is either the owner of the contract or the entry point
     function _requireFromEntryPointOrOwner() internal view {
         require(
             msg.sender == address(entryPoint()) || msg.sender == owner,
@@ -93,6 +105,7 @@ contract MakoAccount is
         );
     }
 
+    // This function is used for validating the signature of the user operation
     function _validateSignature(
         UserOperation calldata userOp,
         bytes32 userOpHash
@@ -103,6 +116,7 @@ contract MakoAccount is
         return 0;
     }
 
+    // This function is used for executing a call operation
     function _call(address target, uint256 value, bytes memory data) internal {
         (bool success, bytes memory result) = target.call{value: value}(data);
         if (!success) {
@@ -127,6 +141,7 @@ contract MakoAccount is
         entryPoint().withdrawTo(withdrawAddress, amount);
     }
 
+    // Function to authorize the upgrade of the contract
     function _authorizeUpgrade(
         address newImplementation
     ) internal view override {
@@ -134,51 +149,65 @@ contract MakoAccount is
         _onlyOwner();
     }
 
+    /**
+     * @dev Struct to hold subscription data
+     */
     struct Subscription {
-        address recipient;
-        address token;
-        uint256 cost;
-        uint256 period;
-        uint256 lastProcessed;
-        bool active;
+        address recipient; // The address of the subscription recipient
+        address token; // The address of the token that will be used for payments
+        uint256 cost; // The cost of each subscription period
+        uint256 period; // The length of each subscription period (in seconds)
+        uint256 lastProcessed; // The timestamp of the last time the subscription was processed
+        bool active; // The status of the subscription (true = active, false = not active)
     }
 
-    Subscription public activeSubscription;
+    Subscription public activeSubscription; // The active subscription
+
+    // Constant that represents a period of one hour
     uint256 constant PERIOD = 1 hours;
 
+    /**
+     * @dev This function is used to subscribe and activate a subscription.
+     * It sets up a new subscription and makes the first payment.
+     *
+     * Requirements:
+     * - There must not be an active subscription.
+     * - The cost of the subscription must be less than or equal to the contract's balance of the subscription token.
+     *
+     * @param recipient The address that will receive the subscription payments.
+     * @param token The address of the token that will be used for payments.
+     */
     function subscribeAndActivate(
         address recipient,
         address token
     ) external onlyOwner {
+        // The subscription must not already exist
         require(
             activeSubscription.recipient == address(0),
             "Subscription already exists"
         );
 
-        require(
-            PERIOD >= 1 hours, // or whatever minimum you want to set
-            "Period too short"
-        );
+        // The period must be at least one hour
+        require(PERIOD >= 1 hours, "Period too short");
 
-        uint256 cost = 3 * 10 ** 18; // Adjusted cost to 3 tokens, assuming they have 18 decimals like ETH
+        // The cost of each subscription period is set to 3 tokens
+        uint256 cost = 3 * 10 ** 18;
 
         IERC20 erc20Token = IERC20(token);
 
+        // The contract must have enough tokens to pay the first subscription period
         require(
             erc20Token.balanceOf(address(this)) >= cost,
             "Insufficient balance for subscription"
         );
 
+        // The contract approves itself to spend the subscription cost
         erc20Token.approve(address(this), cost);
 
-        erc20Token.transferFrom(
-            address(this),
-            recipient,
-            cost
-        );
+        // The contract transfers the subscription cost to the recipient
+        erc20Token.transferFrom(address(this), recipient, cost);
 
-        // Removed the token transfer line from here
-
+        // The active subscription is created
         activeSubscription = Subscription({
             recipient: recipient,
             token: token,
@@ -188,21 +217,42 @@ contract MakoAccount is
             active: true
         });
 
+        // An event is emitted to log the creation of the subscription
         emit SubscriptionCreated(recipient, token, cost, PERIOD);
     }
 
+    /**
+     * @dev This function is used to unsubscribe from a subscription.
+     * It deletes the active subscription.
+     *
+     * Requirements:
+     * - There must be an active subscription.
+     */
     function unsubscribe() external onlyOwner {
+        // The subscription must exist
         require(
             activeSubscription.recipient != address(0),
             "Subscription does not exist"
         );
 
+        // The active subscription is deleted
         delete activeSubscription;
 
+        // An event is emitted to log the deletion of the subscription
         emit SubscriptionDeleted();
     }
 
+    /**
+     * @dev This function is used to process the subscription.
+     * If the subscription period has passed and there are enough tokens, it makes the next payment.
+     *
+     * Requirements:
+     * - There must be an active subscription.
+     * - The subscription must be active.
+     * - The contract must have enough tokens to pay the next subscription period.
+     */
     function processSubscription() external onlyOwner {
+        // The subscription must exist
         require(
             activeSubscription.recipient != address(0),
             "Subscription does not exist"
@@ -210,39 +260,57 @@ contract MakoAccount is
 
         Subscription storage subscription = activeSubscription;
 
+        // The subscription must be active
         require(subscription.active, "Subscription is not active");
 
+        // If the subscription period has passed
         if (
             block.timestamp >= subscription.lastProcessed + subscription.period
         ) {
             IERC20 erc20Token = IERC20(subscription.token);
 
+            // If there are not enough tokens to pay the next subscription period
             if (erc20Token.balanceOf(address(this)) < subscription.cost) {
-                // If balance is insufficient, cancel the subscription
+                // The active subscription is deleted
                 delete activeSubscription;
+                // An event is emitted to log the deletion of the subscription
                 emit SubscriptionDeleted();
+                // The function reverts
                 revert("Insufficient balance for subscription");
             } else {
+                // If there are enough tokens, the next subscription payment is made
                 erc20Token.transferFrom(
                     address(this),
                     subscription.recipient,
                     subscription.cost
                 );
+                // The timestamp of the last processed subscription is updated
                 subscription.lastProcessed = block.timestamp;
+                // An event is emitted to log the processing of the subscription
                 emit SubscriptionProcessed();
             }
         }
     }
 
+    /**
+     * @dev This function is used to get the active subscription details.
+     *
+     * Requirements:
+     * - There must be an active subscription.
+     *
+     * Returns the active subscription.
+     */
     function getSubscription()
         external
         view
         returns (Subscription memory subscription)
     {
+        // The subscription must exist
         require(
             activeSubscription.recipient != address(0),
             "Subscription does not exist"
         );
+        // The function returns the active subscription
         return activeSubscription;
     }
 }
