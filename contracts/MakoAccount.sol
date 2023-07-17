@@ -230,10 +230,7 @@ contract MakoAccount is
      */
     function unsubscribe() external onlyOwner {
         // The subscription must exist
-        require(
-            activeSubscription.recipient != address(0),
-            "Subscription does not exist"
-        );
+        require(activeSubscription.active, "Subscription does not exist");
 
         // The active subscription is deleted
         delete activeSubscription;
@@ -251,21 +248,7 @@ contract MakoAccount is
      * - The subscription must be active.
      * - The contract must have enough tokens to pay the next subscription period.
      */
-    function processSubscription(
-        UserOperation calldata userOp,
-        bytes32 userOpHash
-    ) external {
-        // Validate the user operation's signature
-        require(
-            _validateSignature(userOp, userOpHash) != SIG_VALIDATION_FAILED,
-            "Invalid signature"
-        );
-        // The subscription must exist
-        require(
-            activeSubscription.recipient != address(0),
-            "Subscription does not exist"
-        );
-
+    function processSubscription() external {
         Subscription storage subscription = activeSubscription;
 
         // The subscription must be active
@@ -277,26 +260,23 @@ contract MakoAccount is
         ) {
             IERC20 erc20Token = IERC20(subscription.token);
 
-            // If there are not enough tokens to pay the next subscription period
-            if (erc20Token.balanceOf(address(this)) < subscription.cost) {
-                // The active subscription is deleted
-                delete activeSubscription;
-                // An event is emitted to log the deletion of the subscription
-                emit SubscriptionDeleted();
-                // The function reverts
-                revert("Insufficient balance for subscription");
-            } else {
-                // If there are enough tokens, the next subscription payment is made
-                erc20Token.transferFrom(
-                    address(this),
-                    subscription.recipient,
-                    subscription.cost
-                );
-                // The timestamp of the last processed subscription is updated
-                subscription.lastProcessed = block.timestamp;
-                // An event is emitted to log the processing of the subscription
-                emit SubscriptionProcessed();
-            }
+            // Check for sufficient token balance for the next subscription period
+            uint256 balance = erc20Token.balanceOf(address(this));
+            require(
+                balance >= subscription.cost,
+                "Insufficient balance for subscription"
+            );
+
+            // If there are enough tokens, the next subscription payment is made
+            erc20Token.transferFrom(
+                address(this),
+                subscription.recipient,
+                subscription.cost
+            );
+            // The timestamp of the last processed subscription is updated
+            subscription.lastProcessed = block.timestamp;
+            // An event is emitted to log the processing of the subscription
+            emit SubscriptionProcessed();
         }
     }
 
@@ -314,10 +294,7 @@ contract MakoAccount is
         returns (Subscription memory subscription)
     {
         // The subscription must exist
-        require(
-            activeSubscription.recipient != address(0),
-            "Subscription does not exist"
-        );
+        require(activeSubscription.active, "Subscription does not exist");
         // The function returns the active subscription
         return activeSubscription;
     }
