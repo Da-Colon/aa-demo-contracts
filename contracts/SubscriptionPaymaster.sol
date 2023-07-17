@@ -3,7 +3,7 @@ pragma solidity ^0.8.18;
 
 import "./core/BasePaymaster.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "./SmartAccountImpl.sol";
+import "./MakoAccount.sol";
 
 contract SubscriptionPaymaster is BasePaymaster {
     IERC20 public token;
@@ -32,10 +32,10 @@ contract SubscriptionPaymaster is BasePaymaster {
         returns (bytes memory context, uint256 validationData)
     {
         address user = userOp.sender;
-        SmartAccountImpl account = SmartAccountImpl(payable(userOp.sender));
+        MakoAccount account = MakoAccount(payable(userOp.sender));
 
         // Check if the user has an active subscription
-        SmartAccountImpl.Subscription memory subscription = account
+        MakoAccount.Subscription memory subscription = account
             .getSubscription();
         require(subscription.active, "No active subscription");
 

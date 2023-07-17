@@ -89,7 +89,7 @@
         }
       ]
     },
-    "DemoNFT": {
+    "MakoEnergy": {
       "address": "0x0962C095fF4af9d35D84918a4DD0711Fc8362Ff6",
       "abi": [
         {
@@ -791,7 +791,7 @@
         }
       ]
     },
-    "SmartAccountFactory": {
+    "MakoAccountFactory": {
       "address": "0x6841B820CE95ffeb6600052F84EEAB4C7B7e3494",
       "abi": [
         {
@@ -810,7 +810,7 @@
           "name": "accountImplementation",
           "outputs": [
             {
-              "internalType": "contract SmartAccountImpl",
+              "internalType": "contract MakoAccount",
               "name": "",
               "type": "address"
             }
@@ -834,7 +834,7 @@
           "name": "createAccount",
           "outputs": [
             {
-              "internalType": "contract SmartAccountImpl",
+              "internalType": "contract MakoAccount",
               "name": "ret",
               "type": "address"
             }
@@ -868,7 +868,7 @@
         }
       ]
     },
-    "SmartAccountImpl": {
+    "MakoAccount": {
       "address": "0x28cE1F2CC3Be3131816F1389B76fc1f06971eA07",
       "abi": [
         {
@@ -1164,7 +1164,7 @@
                   "type": "bool"
                 }
               ],
-              "internalType": "struct SmartAccountImpl.Subscription",
+              "internalType": "struct MakoAccount.Subscription",
               "name": "subscription",
               "type": "tuple"
             }

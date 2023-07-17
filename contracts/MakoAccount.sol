@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./core/BaseAccount.sol";
 import "./core/TokenCallbackHandler.sol";
 
-contract SmartAccountImpl is
+contract MakoAccount is
     BaseAccount,
     TokenCallbackHandler,
     UUPSUpgradeable,
@@ -168,7 +168,7 @@ contract SmartAccountImpl is
             erc20Token.balanceOf(address(this)) >= cost,
             "Insufficient balance for subscription"
         );
-        
+
         erc20Token.approve(address(this), cost);
 
         erc20Token.transferFrom(
