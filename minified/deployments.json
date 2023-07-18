@@ -3,7 +3,7 @@
   "chainId": "5",
   "contracts": {
     "MakoAccountFactory": {
-      "address": "0x203e65F8fE3Aa6b1bfC1aBF8b3bD4a14c4f731Ae",
+      "address": "0xD4CA64EE6671a1c68092D459793137CB3776b03b",
       "abi": [
         {
           "inputs": [
@@ -782,7 +782,7 @@
       ]
     },
     "SubscriptionPaymaster": {
-      "address": "0x7ae5f529caEf81093e42bf33c7819461Bc4208B9",
+      "address": "0xA6BC8557f57F802b0fA3D25184D42C20aE26d061",
       "abi": [
         {
           "inputs": [
@@ -841,6 +841,44 @@
             }
           ],
           "name": "ServicePaid",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "currentBlock",
+              "type": "uint256"
+            }
+          ],
+          "name": "ValidatingPaymasterUserOp",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "paymasterData",
+              "type": "bytes"
+            }
+          ],
+          "name": "ValidationPaymaster",
           "type": "event"
         },
         {

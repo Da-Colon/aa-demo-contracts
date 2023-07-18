@@ -153,110 +153,59 @@ contract MakoAccount is
      * @dev Struct to hold subscription data
      */
     struct Subscription {
-        address recipient; // The address of the subscription recipient
-        address token; // The address of the token that will be used for payments
-        uint256 cost; // The cost of each subscription period
-        uint256 period; // The length of each subscription period (in seconds)
-        uint256 lastProcessed; // The timestamp of the last time the subscription was processed
-        bool active; // The status of the subscription (true = active, false = not active)
+        address recipient;
+        address token;
+        uint256 cost;
+        uint256 period; // Period is now in blocks
+        uint256 lastProcessedBlock; // Replaced timestamp with block number
+        bool active;
     }
 
-    Subscription public activeSubscription; // The active subscription
+    Subscription public activeSubscription;
 
-    // Constant that represents a period of one hour
-    uint256 constant PERIOD = 1 hours;
+    // Constants for block periods
+    uint256 public constant BLOCKS_PER_HOUR = 120; // Approximately 4 blocks per minute * 60 minutes
+    uint256 public constant PERIOD = 1 * BLOCKS_PER_HOUR;
 
-    /**
-     * @dev This function is used to subscribe and activate a subscription.
-     * It sets up a new subscription and makes the first payment.
-     *
-     * Requirements:
-     * - There must not be an active subscription.
-     * - The cost of the subscription must be less than or equal to the contract's balance of the subscription token.
-     *
-     * @param recipient The address that will receive the subscription payments.
-     * @param token The address of the token that will be used for payments.
-     */
     function subscribeAndActivate(
         address recipient,
         address token
     ) external onlyOwner {
-        // The subscription must not already exist
-        require(
-            activeSubscription.recipient == address(0),
-            "Subscription already exists"
-        );
+        require(!activeSubscription.active, "Subscription already exists");
+        require(PERIOD >= BLOCKS_PER_HOUR, "Period too short"); // 1 hour minimum
 
-        // The period must be at least one hour
-        require(PERIOD >= 1 hours, "Period too short");
-
-        // The cost of each subscription period is set to 3 tokens
         uint256 cost = 3 * 10 ** 18;
-
         IERC20 erc20Token = IERC20(token);
-
-        // The contract must have enough tokens to pay the first subscription period
         require(
             erc20Token.balanceOf(address(this)) >= cost,
             "Insufficient balance for subscription"
         );
 
-        // The contract approves itself to spend the subscription cost
-        erc20Token.approve(address(this), cost);
-
-        // The contract transfers the subscription cost to the recipient
-        erc20Token.transferFrom(address(this), recipient, cost);
-
-        // The active subscription is created
+        // Create the active subscription
         activeSubscription = Subscription({
             recipient: recipient,
             token: token,
             cost: cost,
             period: PERIOD,
-            lastProcessed: block.timestamp,
+            lastProcessedBlock: block.number, // Use block.number
             active: true
         });
+        erc20Token.approve(address(this), cost);
+        erc20Token.transferFrom(address(this), recipient, cost);
 
-        // An event is emitted to log the creation of the subscription
+
         emit SubscriptionCreated(recipient, token, cost, PERIOD);
     }
 
-    /**
-     * @dev This function is used to unsubscribe from a subscription.
-     * It deletes the active subscription.
-     *
-     * Requirements:
-     * - There must be an active subscription.
-     */
-    function unsubscribe() external onlyOwner {
-        // The subscription must exist
-        require(activeSubscription.active, "Subscription does not exist");
-
-        // The active subscription is deleted
-        delete activeSubscription;
-
-        // An event is emitted to log the deletion of the subscription
-        emit SubscriptionDeleted();
-    }
-
-    /**
-     * @dev This function is used to process the subscription.
-     * If the subscription period has passed and there are enough tokens, it makes the next payment.
-     *
-     * Requirements:
-     * - There must be an active subscription.
-     * - The subscription must be active.
-     * - The contract must have enough tokens to pay the next subscription period.
-     */
-    function processSubscription() external {
+    function processSubscription(uint256 currentBlock) external {
         Subscription storage subscription = activeSubscription;
 
-        // The subscription must be active
         require(subscription.active, "Subscription is not active");
 
         // If the subscription period has passed
         if (
-            block.timestamp >= subscription.lastProcessed + subscription.period
+            currentBlock >=
+            subscription.lastProcessedBlock + subscription.period
         ) {
             IERC20 erc20Token = IERC20(subscription.token);
 
@@ -268,14 +217,11 @@ contract MakoAccount is
             );
 
             // If there are enough tokens, the next subscription payment is made
-            erc20Token.transferFrom(
-                address(this),
-                subscription.recipient,
-                subscription.cost
-            );
-            // The timestamp of the last processed subscription is updated
-            subscription.lastProcessed = block.timestamp;
-            // An event is emitted to log the processing of the subscription
+            erc20Token.transfer(subscription.recipient, subscription.cost);
+
+            // The block number of the last processed subscription is updated
+            subscription.lastProcessedBlock = currentBlock;
+
             emit SubscriptionProcessed();
         }
     }

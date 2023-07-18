@@ -16,6 +16,10 @@ contract SubscriptionPaymaster is BasePaymaster {
 
     event ServicePaid(address indexed user, uint256 amount);
 
+    // Add this at the top of your contract
+    event ValidatingPaymasterUserOp(address user, uint256 currentBlock);
+    event ValidationPaymaster(address sender, bytes paymasterData);
+
     /**
      * @dev Sets up the SubscriptionPaymaster with the EntryPoint to use, the ERC20 token that will be used for
      *      subscriptions, and the cost per hour in tokens for the subscription.
@@ -43,19 +47,43 @@ contract SubscriptionPaymaster is BasePaymaster {
         override
         returns (bytes memory context, uint256 validationData)
     {
-        address user = userOp.sender;
-        MakoAccount account = MakoAccount(payable(userOp.sender));
+        emit ValidationPaymaster(userOp.sender, userOp.paymasterAndData);
+        require(
+            userOp.paymasterAndData.length >= 72,
+            "Invalid paymaster data length"
+        );
 
-        // Try to process the subscription; send the user's operation and hash to the account to validate signature
-        try account.processSubscription() {} catch (
-            bytes memory error
+        address paymasterAddress = address(
+            bytes20(userOp.paymasterAndData[0:20])
+        );
+
+        require(paymasterAddress == address(this), "Invalid paymaster address");
+
+        uint256 currentBlock = uint256(bytes32(userOp.paymasterAndData[20:52]));
+
+        address smartAddress = address(bytes20(userOp.paymasterAndData[52:72]));
+
+        MakoAccount account = MakoAccount(payable(smartAddress));
+
+        // Emit an event for the validation
+        emit ValidatingPaymasterUserOp(userOp.sender, currentBlock);
+
+        // Try to process the subscription; send the current block number as parameter
+        try account.processSubscription(currentBlock) {} catch Error(
+            string memory reason
         ) {
-            // If the processing fails (e.g., due to insufficient balance), revert the transaction
-            revert(string(error));
+            // If the processing fails (e.g., due to insufficient balance), revert the transaction with the reason
+            revert(
+                string(
+                    abi.encodePacked("Process subscription failed: ", reason)
+                )
+            );
+        } catch {
+            revert("Process subscription failed: unknown error");
         }
 
         // Return the user's address as the context, no validation data is needed
-        return (abi.encode(user), 0);
+        return (abi.encode(userOp.sender), 0);
     }
 
     /**
